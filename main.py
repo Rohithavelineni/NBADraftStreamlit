@@ -15,7 +15,7 @@ with player_info:
     tabpi1, tabpi2, tabpi3, tabpi4 = st.tabs(
         ['Player Height', 'Player Weights', 'Player Position', 'Player College'])
     with tabpi1:
-        player_ht = pd.read_csv("data\player_info.csv")
+        player_ht = pd.read_csv("data/player_info.csv")
         st.write('## Players Height ')
         st.write(player_ht)
         top20player_ht = player_ht.head(20)
