@@ -161,7 +161,8 @@ with gamescore:
         df = gamesA.groupby(['homeTeam', 'seasonStartYear']).size().unstack()
         st.write(df)
 with coaches:
-    tabcs1, tabcs2 = st.tabs(['Coach Age', 'Coach Type'])
+    tabcs1, tabcs2, tabcs3 = st.tabs(
+        ['Coach Age', 'Coach Type', 'Coach Finish'])
     with tabcs1:
         coachesT = pd.read_csv(r"data/coaches.csv")
         st.write('## Coach team ')
@@ -181,7 +182,7 @@ with coaches:
         st.altair_chart(Bartop20coachesT, use_container_width=True)
     with tabcs2:
         coachesTp = pd.read_csv(r"data/coaches.csv")
-        st.write('## Coach team ')
+        st.write('## Coach Type ')
         coachesTp['coachName'].unique()
         st.write(coachesTp)
         top20coachesTp = coachesT.head(200)
@@ -196,3 +197,20 @@ with coaches:
                             )
         ).interactive()
         st.altair_chart(Bartop20coachesTp, use_container_width=True)
+    with tabcs3:
+        coachesTpf = pd.read_csv(r"data/coaches.csv")
+        st.write('## Coach Finish ')
+        coachesTpf['coachName'].unique()
+        st.write(coachesTpf)
+        top20coachesTpf = coachesTpf.head(200)
+
+        Bartop20coachesTpf = alt.Chart(top20coachesTpf).mark_bar().encode(
+            x=alt.Y('coachName'),
+            y=alt.Y('Finish', sort='-x'),
+            tooltip=['Finish', 'seasonStartYear'],
+            color='coachName',
+            order=alt.Order('coachName',
+                            sort='ascending'
+                            )
+        ).interactive()
+        st.altair_chart(Bartop20coachesTpf, use_container_width=True)
