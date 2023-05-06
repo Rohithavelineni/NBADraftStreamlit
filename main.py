@@ -10,8 +10,8 @@ st.sidebar.markdown("# NBA data for seasons 1996-2021")
 st.subheader('Content')
 st.text(' In recent years the NBA has seen an explosive growth in popularity.\n Along with the growth in popularity of the NBA, NBA fantasy has becoming more and more popular. \n NBA Fantasy is a game where fans can create their own league with friends and then draft their own fantasy teams with players of NBA Players. \n The fans then earn points each week for how each of their players perform week. \n They compete against each other in weekly matchups to see who created the best fantasy team.')
 
-player_info, boxscore, gamescore, coaches = st.tabs(
-    ['Player Information', 'Box Score', 'Game Score', 'Coaches'])
+player_info, boxscore, gamescore, coaches, salaries = st.tabs(
+    ['Player Information', 'Box Score', 'Game Score', 'Coaches', 'Player Salaries'])
 with player_info:
     tabpi1, tabpi2, tabpi3 = st.tabs(
         ['Player Height', 'Player Weights', 'Player Position'])
@@ -214,3 +214,40 @@ with coaches:
                             )
         ).interactive()
         st.altair_chart(Bartop20coachesTpf, use_container_width=True)
+with salaries:
+    tabs1, tabs2 = st.tabs(
+        [' Player Salary', 'Player Adjusted Salary'])
+    with tabs1:
+        player_s = pd.read_csv("data/salaries.csv")
+        st.write('## Players Salary ')
+        player_s['playerName'].unique()
+        st.write(player_s)
+        top20player_s = player_s.head(20)
+
+        Bartop20player_s = alt.Chart(top20player_s).mark_circle(size=60).encode(
+            x=alt.Y('playerName'),
+            y=alt.Y('salary', sort='-x'),
+            tooltip=['salary', 'seasonStartYear'],
+            color='salary',
+            order=alt.Order('playerName',
+                            sort='ascending'
+                            )
+        ).interactive()
+        st.altair_chart(Bartop20player_s, use_container_width=True)
+    with tabs2:
+        player_s = pd.read_csv("data/salaries.csv")
+        st.write('## Players Adjusted Salary ')
+        player_s['playerName'].unique()
+        st.write(player_s)
+        top20player_s = player_s.head(20)
+
+        Bartop20player_s = alt.Chart(top20player_s).mark_bar().encode(
+            x=alt.Y('playerName'),
+            y=alt.Y('inflationAdjSalary', sort='-x'),
+            tooltip=['inflationAdjSalary', 'seasonStartYear'],
+            color='inflationAdjSalary',
+            order=alt.Order('playerName',
+                            sort='ascending'
+                            )
+        ).interactive()
+        st.altair_chart(Bartop20player_s, use_container_width=True)
