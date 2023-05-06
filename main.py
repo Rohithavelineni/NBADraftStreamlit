@@ -31,7 +31,7 @@ with player_info:
         ).interactive()
         st.altair_chart(Barplayer_ht, use_container_width=True)
     with tabpi2:
-        player_wt = pd.read_csv("data\player_info.csv")
+        player_wt = pd.read_csv("data/player_info.csv")
         st.write('## Players Weight ')
         st.write(player_wt)
         top20player_wt = player_wt.head(20)
@@ -47,7 +47,7 @@ with player_info:
         ).interactive()
         st.altair_chart(Barplayer_wt, use_container_width=True)
     with tabpi3:
-        player_pos = pd.read_csv("data\player_info.csv")
+        player_pos = pd.read_csv("data/player_info.csv")
         st.write('## Players Position ')
         st.write(player_pos)
         top20player_pos = player_pos.head(50)
@@ -63,7 +63,7 @@ with player_info:
         ).interactive()
         st.altair_chart(Scaplayer_pos, use_container_width=True)
     with tabpi4:
-        player_clg = pd.read_csv("data\player_info.csv")
+        player_clg = pd.read_csv("data/player_info.csv")
         st.write('## Players Position ')
         st.write(player_clg)
         top20player_clg = player_clg.head(20)
@@ -82,7 +82,7 @@ with boxscore:
     tabbs1, tabbs2, tabbs3, tabbs4, tabbs5 = st.tabs(
         ['Player MP Scores', 'Player FGA Scores', 'Player 3P Scored ', 'Player 3Pointers Attempted', 'Players PTS'])
     with tabbs1:
-        boxscoreMP = pd.read_csv(r"data\boxscore.csv")
+        boxscoreMP = pd.read_csv(r"data/boxscore.csv")
         st.write('## Players Height ')
         st.write(boxscoreMP)
         top20boxscoreMP = boxscoreMP.head(20)
@@ -98,7 +98,7 @@ with boxscore:
         ).interactive()
         st.altair_chart(BarboxscoreMP, use_container_width=True)
     with tabbs2:
-        boxscoreFGA = pd.read_csv(r"data\boxscore.csv")
+        boxscoreFGA = pd.read_csv(r"data/boxscore.csv")
         st.write('## Players FGA ')
         st.write(boxscoreFGA)
         top20boxscoreFGA = boxscoreFGA.head(20)
@@ -114,7 +114,7 @@ with boxscore:
         ).interactive()
         st.altair_chart(BarboxscoreFGA, use_container_width=True)
     with tabbs3:
-        boxscore3P = pd.read_csv(r"data\boxscore.csv")
+        boxscore3P = pd.read_csv(r"data/boxscore.csv")
         st.write('## Players 3P ')
         st.write(boxscore3P)
         top20boxscore3P = boxscore3P.head(20)
@@ -130,7 +130,7 @@ with boxscore:
         ).interactive()
         st.altair_chart(Barboxscore3P, use_container_width=True)
     with tabbs4:
-        boxscore3Pointers = pd.read_csv(r"data\boxscore.csv")
+        boxscore3Pointers = pd.read_csv(r"data/boxscore.csv")
         st.write('## Players 3Pointers ')
         st.write(boxscore3Pointers)
         top20boxscore3Pointers = boxscore3Pointers.head(20)
@@ -146,7 +146,7 @@ with boxscore:
         ).interactive()
         st.altair_chart(Barboxscore3Pointers, use_container_width=True)
     with tabbs5:
-        boxscorePTS = pd.read_csv(r"data\boxscore.csv")
+        boxscorePTS = pd.read_csv(r"data/boxscore.csv")
         st.write('## Players PTS ')
         st.write(boxscorePTS)
         top20boxscorePTS = boxscorePTS.head(20)
