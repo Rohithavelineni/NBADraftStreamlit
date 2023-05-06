@@ -10,11 +10,11 @@ st.sidebar.markdown("# NBA data for seasons 1996-2021")
 st.subheader('Content')
 st.text(' In recent years the NBA has seen an explosive growth in popularity.\n Along with the growth in popularity of the NBA, NBA fantasy has becoming more and more popular. \n NBA Fantasy is a game where fans can create their own league with friends and then draft their own fantasy teams with players of NBA Players. \n The fans then earn points each week for how each of their players perform week. \n They compete against each other in weekly matchups to see who created the best fantasy team.')
 
-player_info, boxscore, gamescore = st.tabs(
-    ['Player Information', 'Box Score', 'Game Score'])
+player_info, boxscore, gamescore, coaches = st.tabs(
+    ['Player Information', 'Box Score', 'Game Score', 'Coaches'])
 with player_info:
-    tabpi1, tabpi2, tabpi3, tabpi4 = st.tabs(
-        ['Player Height', 'Player Weights', 'Player Position', 'Player College'])
+    tabpi1, tabpi2, tabpi3 = st.tabs(
+        ['Player Height', 'Player Weights', 'Player Position'])
     with tabpi1:
         player_ht = pd.read_csv("data/player_info.csv")
         st.write('## Players Height ')
@@ -63,22 +63,7 @@ with player_info:
                             )
         ).interactive()
         st.altair_chart(Scaplayer_pos, use_container_width=True)
-    with tabpi4:
-        player_clg = pd.read_csv("data/player_info.csv")
-        st.write('## Players Position ')
-        st.write(player_clg)
-        top20player_clg = player_clg.head(20)
 
-        Hisplayer_clg = alt.Chart(top20player_clg).mark_bar().encode(
-            alt.X("Colleges", bin=True),
-            y='count()',
-            tooltip=['count()'],
-            color='Colleges',
-            order=alt.Order('Colleges',
-                            sort='ascending'
-                            )
-        )
-        st.altair_chart(Hisplayer_clg, use_container_width=True)
 with boxscore:
     tabbs1, tabbs2, tabbs3, tabbs4, tabbs5 = st.tabs(
         ['Player MP Scores', 'Player FGA Scores', 'Player 3P Scored ', 'Player 3Pointers Attempted', 'Players PTS'])
@@ -175,3 +160,39 @@ with gamescore:
         st.write('## Home Team Season Stats')
         df = gamesA.groupby(['homeTeam', 'seasonStartYear']).size().unstack()
         st.write(df)
+with coaches:
+    tabcs1, tabcs2 = st.tabs(['Coach Age', 'Coach Type'])
+    with tabcs1:
+        coachesT = pd.read_csv(r"data/coaches.csv")
+        st.write('## Coach team ')
+        coachesT['coachName'].unique()
+        st.write(coachesT)
+        top20coachesT = coachesT.head(200)
+
+        Bartop20coachesT = alt.Chart(top20coachesT).mark_circle(size=60).encode(
+            x=alt.Y('coachName'),
+            y=alt.Y('Age', sort='-x'),
+            tooltip=['Age'],
+            color='coachName',
+            order=alt.Order('coachName',
+                            sort='ascending'
+                            )
+        ).interactive()
+        st.altair_chart(Bartop20coachesT, use_container_width=True)
+    with tabcs2:
+        coachesTp = pd.read_csv(r"data/coaches.csv")
+        st.write('## Coach team ')
+        coachesTp['coachName'].unique()
+        st.write(coachesTp)
+        top20coachesTp = coachesT.head(200)
+
+        Bartop20coachesTp = alt.Chart(top20coachesTp).mark_bar().encode(
+            x=alt.Y('coachName'),
+            y=alt.Y('coachType', sort='-x'),
+            tooltip=['coachType'],
+            color='coachName',
+            order=alt.Order('coachName',
+                            sort='ascending'
+                            )
+        ).interactive()
+        st.altair_chart(Bartop20coachesTp, use_container_width=True)
