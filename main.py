@@ -5,7 +5,7 @@ import altair as alt
 
 st.markdown("# NBA Fantasy ")
 st.sidebar.markdown("# NBA data for seasons 1996-2021")
-@st.cache_data
+
 
 st.subheader('Content')
 st.text(' In recent years the NBA has seen an explosive growth in popularity.\n Along with the growth in popularity of the NBA, NBA fantasy has becoming more and more popular. \n NBA Fantasy is a game where fans can create their own league with friends and then draft their own fantasy teams with players of NBA Players. \n The fans then earn points each week for how each of their players perform week. \n They compete against each other in weekly matchups to see who created the best fantasy team.')
