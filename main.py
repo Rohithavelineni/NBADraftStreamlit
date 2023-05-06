@@ -10,7 +10,8 @@ st.sidebar.markdown("# NBA data for seasons 1996-2021")
 st.subheader('Content')
 st.text(' In recent years the NBA has seen an explosive growth in popularity.\n Along with the growth in popularity of the NBA, NBA fantasy has becoming more and more popular. \n NBA Fantasy is a game where fans can create their own league with friends and then draft their own fantasy teams with players of NBA Players. \n The fans then earn points each week for how each of their players perform week. \n They compete against each other in weekly matchups to see who created the best fantasy team.')
 
-player_info, boxscore = st.tabs(['Player Information', 'Box Score'])
+player_info, boxscore, gamescore = st.tabs(
+    ['Player Information', 'Box Score', 'Game Score'])
 with player_info:
     tabpi1, tabpi2, tabpi3, tabpi4 = st.tabs(
         ['Player Height', 'Player Weights', 'Player Position', 'Player College'])
