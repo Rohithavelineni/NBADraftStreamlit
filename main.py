@@ -161,3 +161,16 @@ with boxscore:
                             )
         ).interactive()
         st.altair_chart(BarboxscorePTS, use_container_width=True)
+with gamescore:
+    tabgs1, tabgs2 = st.tabs(
+        ['Away Team Season Stats', 'Home Team Season Stats'])
+    with tabgs1:
+        gamesA = pd.read_csv(r"data\games.csv")
+        st.write('## Away Team Season Stats')
+        df = gamesA.groupby(['awayTeam', 'seasonStartYear']).size().unstack()
+        st.write(df)
+    with tabgs2:
+        gamesA = pd.read_csv(r"data\games.csv")
+        st.write('## Home Team Season Stats')
+        df = gamesA.groupby(['homeTeam', 'seasonStartYear']).size().unstack()
+        st.write(df)
