@@ -22,3 +22,5 @@ Data/operation abstraction design: How did you prepare your data?
 This data set is from Kaggle
 
 Future work: What if any future work do you plan to keep on doing to improve your app. To add more insights and visuals player specific and collecting more data for upcoming NBA games.
+
+streamlit app link :  https://rohithavelineni-nbadraftstreamlit-main-lfdof8.streamlit.app/
